@@ -1,0 +1,749 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+
+entity RowBuffer is
+  port(
+    i_CLOCK : in std_logic;
+    i_D     : in std_logic_vector(7 downto 0);
+    o_OUT   : out std_logic_vector(7 downto 0)
+  );
+end entity RowBuffer;
+
+
+
+architecture Arch of RowBuffer is
+
+	component FLipFLop 
+		port (
+				 i_CLOCK : in std_logic;
+				 i_D     : in std_logic_vector(7 downto 0);
+				 o_QF    : out std_logic_vector(7 downto 0)
+				);
+	end component;
+	
+	
+	signal w0: std_logic_vector(7 downto 0);
+	signal w1: std_logic_vector(7 downto 0);
+	signal w2: std_logic_vector(7 downto 0);
+	signal w3: std_logic_vector(7 downto 0);
+	signal w4: std_logic_vector(7 downto 0);
+	signal w5: std_logic_vector(7 downto 0);
+	signal w6: std_logic_vector(7 downto 0);
+	signal w7: std_logic_vector(7 downto 0);
+	signal w8: std_logic_vector(7 downto 0);
+	signal w9: std_logic_vector(7 downto 0);
+	signal w10: std_logic_vector(7 downto 0);
+	signal w11: std_logic_vector(7 downto 0);
+	signal w12: std_logic_vector(7 downto 0);
+	signal w13: std_logic_vector(7 downto 0);
+	signal w14: std_logic_vector(7 downto 0);
+	signal w15: std_logic_vector(7 downto 0);
+	signal w16: std_logic_vector(7 downto 0);
+	signal w17: std_logic_vector(7 downto 0);
+	signal w18: std_logic_vector(7 downto 0);
+	signal w19: std_logic_vector(7 downto 0);
+	signal w20: std_logic_vector(7 downto 0);
+	signal w21: std_logic_vector(7 downto 0);
+	signal w22: std_logic_vector(7 downto 0);
+	signal w23: std_logic_vector(7 downto 0);
+	signal w24: std_logic_vector(7 downto 0);
+	signal w25: std_logic_vector(7 downto 0);
+	signal w26: std_logic_vector(7 downto 0);
+	signal w27: std_logic_vector(7 downto 0);
+	signal w28: std_logic_vector(7 downto 0);
+	signal w29: std_logic_vector(7 downto 0);
+	signal w30: std_logic_vector(7 downto 0);
+	signal w31: std_logic_vector(7 downto 0);
+	signal w32: std_logic_vector(7 downto 0);
+	signal w33: std_logic_vector(7 downto 0);
+	signal w34: std_logic_vector(7 downto 0);
+	signal w35: std_logic_vector(7 downto 0);
+	signal w36: std_logic_vector(7 downto 0);
+	signal w37: std_logic_vector(7 downto 0);
+	signal w38: std_logic_vector(7 downto 0);
+	signal w39: std_logic_vector(7 downto 0);
+	signal w40: std_logic_vector(7 downto 0);
+	signal w41: std_logic_vector(7 downto 0);
+	signal w42: std_logic_vector(7 downto 0);
+	signal w43: std_logic_vector(7 downto 0);
+	signal w44: std_logic_vector(7 downto 0);
+	signal w45: std_logic_vector(7 downto 0);
+	signal w46: std_logic_vector(7 downto 0);
+	signal w47: std_logic_vector(7 downto 0);
+	signal w48: std_logic_vector(7 downto 0);
+	signal w49: std_logic_vector(7 downto 0);
+	signal w50: std_logic_vector(7 downto 0);
+	signal w51: std_logic_vector(7 downto 0);
+	signal w52: std_logic_vector(7 downto 0);
+	signal w53: std_logic_vector(7 downto 0);
+	signal w54: std_logic_vector(7 downto 0);
+	signal w55: std_logic_vector(7 downto 0);
+	signal w56: std_logic_vector(7 downto 0);
+	signal w57: std_logic_vector(7 downto 0);
+	signal w58: std_logic_vector(7 downto 0);
+	signal w59: std_logic_vector(7 downto 0);
+	signal w60: std_logic_vector(7 downto 0);
+	signal w61: std_logic_vector(7 downto 0);
+	signal w62: std_logic_vector(7 downto 0);
+	signal w63: std_logic_vector(7 downto 0);
+	signal w64: std_logic_vector(7 downto 0);
+	signal w65: std_logic_vector(7 downto 0);
+	signal w66: std_logic_vector(7 downto 0);
+	signal w67: std_logic_vector(7 downto 0);
+	signal w68: std_logic_vector(7 downto 0);
+	signal w69: std_logic_vector(7 downto 0);
+	signal w70: std_logic_vector(7 downto 0);
+	signal w71: std_logic_vector(7 downto 0);
+	signal w72: std_logic_vector(7 downto 0);
+	signal w73: std_logic_vector(7 downto 0);
+	signal w74: std_logic_vector(7 downto 0);
+	signal w75: std_logic_vector(7 downto 0);
+	signal w76: std_logic_vector(7 downto 0);
+	signal w77: std_logic_vector(7 downto 0);
+	signal w78: std_logic_vector(7 downto 0);
+	signal w79: std_logic_vector(7 downto 0);
+	signal w80: std_logic_vector(7 downto 0);
+	signal w81: std_logic_vector(7 downto 0);
+	signal w82: std_logic_vector(7 downto 0);
+	signal w83: std_logic_vector(7 downto 0);
+	signal w84: std_logic_vector(7 downto 0);
+	signal w85: std_logic_vector(7 downto 0);
+	signal w86: std_logic_vector(7 downto 0);
+	signal w87: std_logic_vector(7 downto 0);
+	signal w88: std_logic_vector(7 downto 0);
+	signal w89: std_logic_vector(7 downto 0);
+	signal w90: std_logic_vector(7 downto 0);
+	signal w91: std_logic_vector(7 downto 0);
+	signal w92: std_logic_vector(7 downto 0);
+	signal w93: std_logic_vector(7 downto 0);
+	signal w94: std_logic_vector(7 downto 0);
+	signal w95: std_logic_vector(7 downto 0);
+	signal w96: std_logic_vector(7 downto 0);
+	signal w97: std_logic_vector(7 downto 0);
+	signal w98: std_logic_vector(7 downto 0);
+	signal w99: std_logic_vector(7 downto 0);
+	signal w100: std_logic_vector(7 downto 0);
+	signal w101: std_logic_vector(7 downto 0);
+	
+begin
+	
+	u0: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => i_D,
+									o_QF    => w0								 
+								 );
+								 
+	u1: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w0,
+									o_QF    => w1								 
+								 );
+	
+	u2: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w1,
+									o_QF    => w2								 
+								 );
+
+	u3: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w2,
+									o_QF    => w3								 
+								 );
+	
+	u4: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w3,
+									o_QF    => w4								 
+								 );
+
+	u5: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w4,
+									o_QF    => w5								 
+								 );
+
+	u6: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w5,
+									o_QF    => w6								 
+								 );
+
+	u7: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w6,
+									o_QF    => w7								 
+								 );
+
+	u8: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w7,
+									o_QF    => w8								 
+								 );
+
+	u9: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w8,
+									o_QF    => w9								 
+								 );
+
+	u10: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w9,
+									o_QF    => w10								 
+								 );
+								 
+	u11: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w10,
+									o_QF    => w11								 
+								 );
+
+	u12: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w11,
+									o_QF    => w12								 
+								 );
+						 
+	u13: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w12,
+									o_QF    => w13								 
+							    );
+ 
+	u14: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w13,
+									o_QF    => w14								 
+								 );
+	
+							 
+	u15: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w14,
+									o_QF    => w15								 
+							 );
+							 
+	u16: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w15,
+									o_QF    => w16								 
+							 );
+							 
+	u17: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w16,
+									o_QF    => w17								 
+							 );
+							 
+	u18: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w17,
+									o_QF    => w18								 
+							 );
+							 
+	u19: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w18,
+									o_QF    => w19								 
+							 );
+							 
+	u20: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w19,
+									o_QF    => w20								 
+							 );
+							 
+	u21: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w20,
+									o_QF    => w21								 
+							 );
+							 
+	u22: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w21,
+									o_QF    => w22								 
+							 );
+							 
+	u23: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w22,
+									o_QF    => w23								 
+							 );
+							 
+	u24: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w23,
+									o_QF    => w24								 
+							 );
+							 
+	u25: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w24,
+									o_QF    => w25								 
+							 );
+							 
+	u26: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w25,
+									o_QF    => w26								 
+							 );
+							 
+	u27: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w26,
+									o_QF    => w27								 
+							 );
+							 
+	u28: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w27,
+									o_QF    => w28								 
+							 );
+							 
+	u29: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w28,
+									o_QF    => w29								 
+							 );
+							 
+	u30: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w29,
+									o_QF    => w30								 
+							 );
+							 
+	u31: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w30,
+									o_QF    => w31								 
+							 );
+							 
+	u32: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w31,
+									o_QF    => w32								 
+							 );
+							 
+	u33: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w32,
+									o_QF    => w33								 
+							 );
+							 
+	u34: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w33,
+									o_QF    => w34								 
+							 );
+							 
+	u35: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w34,
+									o_QF    => w35								 
+							 );
+							 
+	
+	u36: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w35,
+									o_QF    => w36								 
+							 );
+							
+	u37: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w36,
+									o_QF    => w37								 
+							 );	
+							 
+	u38: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w37,
+									o_QF    => w38								 
+							 );
+							 
+	u39: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w38,
+									o_QF    => w39								 
+							 );
+							 
+	u40: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w39,
+									o_QF    => w40								 
+							 );
+							 
+	u41: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w40,
+									o_QF    => w41								 
+							 );
+							 
+	u42: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w41,
+									o_QF    => w42								 
+							 );
+							 
+	u43: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w42,
+									o_QF    => w43								 
+							 );
+							 
+	u44: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w43,
+									o_QF    => w44								 
+							 );
+							 
+	u45: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w44,
+									o_QF    => w45								 
+							 );
+							 
+	u46: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w45,
+									o_QF    => w46								 
+							 );
+							 
+	u47: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w46,
+									o_QF    => w47								 
+							 );
+							 
+	u48: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w47,
+									o_QF    => w48								 
+							 );
+							 
+	u49: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w48,
+									o_QF    => w49								 
+							 );
+	u50: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w49,
+									o_QF    => w50								 
+							 );
+							 
+	u51: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w50,
+									o_QF    => w51								 
+							 );
+							
+							
+	u52: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w51,
+									o_QF    => w52								 
+							 );
+							 
+	u53: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w52,
+									o_QF    => w53								 
+							 );
+							 
+	u54: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w53,
+									o_QF    => w54								 
+							 );
+							 
+	u55: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w54,
+									o_QF    => w55								 
+							 );
+							 
+	u56: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w55,
+									o_QF    => w56								 
+							 );
+							 
+	u57: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w56,
+									o_QF    => w57								 
+							 );
+							 
+	u58: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w57,
+									o_QF    => w58								 
+							 );
+							 
+	u59: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w58,
+									o_QF    => w59								 
+							 );
+							 
+	u60: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w59,
+									o_QF    => w60								 
+							 );
+							 
+	u61: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w60,
+									o_QF    => w61								 
+							 );
+	
+	u62: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w61,
+									o_QF    => w62								 
+							 );
+							 
+	u63: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w62,
+									o_QF    => w63								 
+							 );
+							
+	u64: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w63,
+									o_QF    => w64								 
+							 );	
+			
+	u65: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w64,
+									o_QF    => w65								 
+							 );
+	
+	u66: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w65,
+									o_QF    => w66								 
+							 );
+	
+	u67: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w66,
+									o_QF    => w67								 
+							 );
+	
+	u68: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w67,
+									o_QF    => w68								 
+							 );
+	
+	u69: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w68,
+									o_QF    => w69								 
+							 );
+							 
+	u70: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w69,
+									o_QF    => w70								 
+							 );
+							 
+	u71: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w70,
+									o_QF    => w71								 
+							 ); 
+							 
+	u72: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w71,
+									o_QF    => w72								 
+							 );
+							 
+	u73: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w72,
+									o_QF    => w73								 
+							 );
+							 
+	u74: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w73,
+									o_QF    => w74								 
+							 );
+							 
+	u75: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w74,
+									o_QF    => w75								 
+							 );
+							 
+	u76: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w75,
+									o_QF    => w76								 
+							 );
+							 
+	u77: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w76,
+									o_QF    => w77								 
+							 );
+							 
+	u78: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w77,
+									o_QF    => w78								 
+							 );
+							 
+	u79: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w78,
+									o_QF    => w79								 
+							 );
+							 
+	u80: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w79,
+									o_QF    => w80								 
+							 );
+							 
+	u81: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w80,
+									o_QF    => w81								 
+							 );
+							 
+	u82: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w81,
+									o_QF    => w82								 
+							 );
+							 
+	u83: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w82,
+									o_QF    => w83								 
+							 );
+							 
+	u84: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w83,
+									o_QF    => w84								 
+							 );
+							 
+	u85: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w84,
+									o_QF    => w85								 
+							 );
+							 
+	u86: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w85,
+									o_QF    => w86								 
+							 );
+							 
+	u87: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w86,
+									o_QF    => w87								 
+							 );
+							 
+	u88: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w87,
+									o_QF    => w88								 
+							 );
+							 
+	u89: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w88,
+									o_QF    => w89								 
+							 );
+							 
+	u90: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w89,
+									o_QF    => w90								 
+							 );
+							 
+	u91: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w90,
+									o_QF    => w91								 
+							 );
+							 
+	u92: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w91,
+									o_QF    => w92								 
+							 );
+							 
+	u93: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w92,
+									o_QF    => w93								 
+							 );
+							 
+	u94: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w93,
+									o_QF    => w94								 
+							 );
+							 
+	u95: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w94,
+									o_QF    => w95								 
+							 );
+							 
+	u96: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w95,
+									o_QF    => w96								 
+							 );
+							 
+	u97: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w96,
+									o_QF    => w97								 
+							 );
+							 
+	u98: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w97,
+									o_QF    => w98								 
+							 );
+							 
+	u99: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w98,
+									o_QF    => w99							 
+							 );
+							 
+	u100: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w99,
+									o_QF    => w100							 
+							 );
+							 
+	u101: FlipFlop PORT MAP(
+									i_CLOCK => i_CLOCK,
+									i_D     => w100,
+									o_QF    => w101						 
+							 );
+	
+	o_OUT0 <= w101;
+	o_OUT1 <= w100;
+	o_OUT2 <= w99;
+	
+end Arch;
